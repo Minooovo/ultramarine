@@ -1,0 +1,138 @@
+/* ===== 基础重置 ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-deep: #0B1026;
+  --bg-mid: #1B2A6B;
+  --primary: #2E4BC6;
+  --pink: #FF3E9A;
+  --gold: #FFD166;
+  --purple: #8B5CF6;
+  --text: #E8ECFF;
+  --text-dim: #9AA6D4;
+}
+
+body {
+  font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: var(--bg-deep);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ===== 欢迎页 ===== */
+.welcome-page {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 50% 40%, #1B2A6B 0%, #0B1026 70%);
+}
+
+.welcome-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  animation: fadeUp 1.2s ease both;
+}
+
+.logo {
+  font-size: clamp(3rem, 10vw, 6rem);
+  letter-spacing: 0.3em;
+  font-weight: 700;
+  background: linear-gradient(90deg, var(--pink), var(--gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-indent: 0.3em;
+}
+
+.logo-sub {
+  margin-top: 0.5rem;
+  font-size: clamp(0.9rem, 2vw, 1.2rem);
+  letter-spacing: 0.6em;
+  color: var(--text-dim);
+  text-indent: 0.6em;
+}
+
+.welcome-text {
+  margin-top: 3rem;
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  letter-spacing: 0.8em;
+  color: var(--text);
+  text-indent: 0.8em;
+}
+
+.enter-btn {
+  display: inline-block;
+  margin-top: 3.5rem;
+  padding: 1rem 3.5rem;
+  border: 2px solid var(--pink);
+  border-radius: 999px;
+  color: var(--pink);
+  text-decoration: none;
+  font-size: 1.1rem;
+  letter-spacing: 0.4em;
+  text-indent: 0.4em;
+  transition: all 0.35s ease;
+}
+
+.enter-btn:hover {
+  background: var(--pink);
+  color: var(--bg-deep);
+  box-shadow: 0 0 30px var(--pink), 0 0 60px rgba(255, 62, 154, 0.5);
+  transform: translateY(-2px);
+}
+
+/* ===== 背景光斑 ===== */
+.glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.5;
+  pointer-events: none;
+  animation: float 8s ease-in-out infinite;
+}
+
+.glow-1 {
+  width: 400px; height: 400px;
+  background: var(--primary);
+  top: -100px; left: -100px;
+}
+
+.glow-2 {
+  width: 300px; height: 300px;
+  background: var(--pink);
+  bottom: -80px; right: -80px;
+  animation-delay: 2s;
+}
+
+.glow-3 {
+  width: 250px; height: 250px;
+  background: var(--purple);
+  top: 50%; right: 20%;
+  animation-delay: 4s;
+}
+
+/* ===== 动画 ===== */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%      { transform: translate(30px, -30px) scale(1.1); }
+}
+
+/* ===== 响应式 ===== */
+@media (max-width: 600px) {
+  .glow { filter: blur(60px); }
+  .glow-1 { width: 250px; height: 250px; }
+  .glow-2 { width: 200px; height: 200px; }
+  .glow-3 { width: 150px; height: 150px; }
+}
